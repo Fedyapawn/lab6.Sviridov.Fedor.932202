@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Task №7</title>
+    <link rel="stylesheet" href="styles.css">
+	<style>
+		* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+		}
+
+		body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-start;
+			background-color: #fff;
+			font-family: Arial, sans-serif;
+		}
+
+		.header {
+			display: flex;
+			width: 60%;
+			background-color: red;
+			align-items: center;
+		}
+
+		.header-item {
+			color: white;
+			font-weight: bold;
+			text-align: center;
+			flex: 1;
+			padding: 10px;
+			border: 3px solid black;
+			cursor: pointer;
+		}
+
+		.container {
+			display: flex;
+			width: 60%;
+			height: 400px;
+			transition: all 0.5s ease;
+		}
+
+		.left-column, .right-column {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding-top: 10px;
+			transition: flex 0.5s ease;
+		}
+
+		.left-column {
+			background-color: blue;
+		}
+
+		.right-column {
+			background-color: green;
+		}
+
+		img {
+			width: 420px;
+			height: 300px;
+			object-fit: cover;
+			transition: transform 0.5s ease;
+		}
+	</style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-item left" id="left-btn">Левая колонка</div>
+        <div class="header-item center" id="both-btn">Обе две</div>
+        <div class="header-item right" id="right-btn">Правая колонка</div>
+    </div>
+    <div class="container">
+        <div class="left-column" id="left-column">
+            <img src="cat.jpg" alt="Кот" id="left-img">
+        </div>
+        <div class="right-column" id="right-column">
+            <img src="dog.jpg" alt="Собака" id="right-img">
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const leftBtn = document.getElementById('left-btn');
+            const bothBtn = document.getElementById('both-btn');
+            const rightBtn = document.getElementById('right-btn');
+            const leftColumn = document.getElementById('left-column');
+            const rightColumn = document.getElementById('right-column');
+            const leftImg = document.getElementById('left-img');
+            const rightImg = document.getElementById('right-img');
+
+            // Показать только левую колонку
+            leftBtn.addEventListener('click', () => {
+                leftColumn.style.flex = '9';
+                rightColumn.style.flex = '1';
+                leftImg.style.display = 'block';
+                rightImg.style.display = 'none';
+            });
+
+            // Показать обе колонки
+            bothBtn.addEventListener('click', () => {
+                leftColumn.style.flex = '1';
+                rightColumn.style.flex = '1';
+                leftImg.style.display = 'block';
+                rightImg.style.display = 'block';
+            });
+
+            // Показать только правую колонку
+            rightBtn.addEventListener('click', () => {
+                leftColumn.style.flex = '1';
+                rightColumn.style.flex = '9';
+                leftImg.style.display = 'none';
+                rightImg.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
